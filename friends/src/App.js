@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// imports
+import PrivateRoute from './components/PrivateRoute';
+import Login from './components/Login';
+import FriendsList from './components/FriendsList';
+import UpdateFriend from './components/UpdateFriend';
+import AddFriend from './components/AddFriend';
+import DeleteFriend from './components/DeleteFriend';
+
+class App extends React.Component {
+	constructor() {
+		super();
+		this.state = { credentials: {} };
+  }
+   // links
+	render() {
+		return (
+			<Router>
+				<Link to="/login">Login</Link>
+				<Link to="/friends-list">Friends List</Link>
+				<Link to="/add-friend">Add Friend</Link>
+				<Link to="/update-friend">Update Friend</Link>
+				<Link to="/delete-friend">Delete Friend</Link>
+
+      {/* routes */}
+				<Switch>
+					<PrivateRoute exact path="/add-friend" component={AddFriend} />
+					<PrivateRoute exact path="/delete-friend" component={DeleteFriend} />
+					<PrivateRoute exact path="/friends-list" component={FriendsList} />
+					<PrivateRoute exact path="/update-friend" component={UpdateFriend} />
+					<Route path="/login" component={Login} />
+				</Switch>
+			</Router>
+		);
+	}
 }
 
 export default App;
