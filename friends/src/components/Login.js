@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Loader from 'react-loader-spinner'
 
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
@@ -48,7 +48,7 @@ class Login extends React.Component {
 					<input name="password" onChange={this.handleChange} />
 					<button>Login</button>
 				</form>
-				{this.state.isLoading && <div>Loggin in</div>}
+				{this.state.isLoading && <div><Loader type="BallTriangle" color="#00BFFF" height={80} width={80} /></div>}
 			</div>
 		);
 	}
