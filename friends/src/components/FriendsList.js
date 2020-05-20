@@ -1,6 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+
 class FriendsList extends React.Component {
 	constructor() {
 		super();
@@ -12,7 +13,7 @@ class FriendsList extends React.Component {
 
     // returns the list of friends 
 	getFriendsList = () => {
-		const token = window.localStorage.getItem('token');
+		
 		axiosWithAuth()
 			.get('/api/friends')
 			.then((res) => {

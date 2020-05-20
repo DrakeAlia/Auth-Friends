@@ -1,8 +1,7 @@
 import React from 'react';
-import { render } from 'react-dom';
 
-import axios from 'axios';
-import FriendsList from './FriendsList';
+
+
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 class Login extends React.Component {
 	constructor() {
@@ -25,7 +24,8 @@ class Login extends React.Component {
 		console.log(this.state.credentials);
     };
 
-    // returns a token to be added to the header of all other requests. Pass in the following credentials as the body of the request: : { username: 'Lambda School', password: 'i<3Lambd4' }
+    // returns a token to be added to the header of all other requests
+    // Pass in the following credentials as the body of the request: : { username: 'Lambda School', password: 'i<3Lambd4' }
 	handleSubmit = (event) => {
 		event.preventDefault();
 		this.setState({ ...this.state, isLoading: true });
@@ -35,7 +35,7 @@ class Login extends React.Component {
 				console.log(res);
 				window.localStorage.setItem('token', res.data.payload);
 				this.setState({ ...this.state, isLoading: false });
-				this.props.history.push('/protected');
+				this.props.history.push('/Friends-List');
 			})
 			.catch((err) => console.log(err));
 	};
@@ -54,4 +54,4 @@ class Login extends React.Component {
 	}
 }
 
-export default Login;
+export default Login

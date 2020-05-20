@@ -6,7 +6,8 @@ class UpdateFriend extends React.Component {
 		super();
 		this.state = { id: '', name: '', age: '', email: '' };
     }
-    // updates the friend using the id passed as part of the URL. Send the an object with the updated information as the body of the request (the second argument passed to axios.put).
+    // updates the friend using the id passed as part of the URL. 
+    // Send the an object with the updated information as the body of the request (the second argument passed to axios.put).
 	submitHandler = (event) => {
 		event.preventDefault();
 		console.log(this.state);
